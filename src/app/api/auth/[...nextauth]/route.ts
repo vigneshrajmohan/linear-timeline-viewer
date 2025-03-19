@@ -100,8 +100,8 @@ const authOptions: NextAuthOptions = {
   pages: {
     signIn: "/",
   },
-  debug: true,
-  secret: "your-secret-key-for-development-only",
+  debug: process.env.NODE_ENV === "development",
+  secret: process.env.NEXTAUTH_SECRET || "your-secret-key-for-development-only",
 };
 
 const handler = NextAuth(authOptions);
